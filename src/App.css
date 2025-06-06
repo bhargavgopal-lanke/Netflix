@@ -25,6 +25,7 @@ body {
   background-size: cover;
   min-height: 100vh;
   background-repeat: no-repeat;
+  padding-bottom: 48px;
 }
 
 .container {
@@ -139,4 +140,45 @@ span.signup-info {
 span.recaptcha-info {
   color: rgba(255, 255, 255, 0.5);
   font-size: 0.8125rem;
+}
+
+.footer {
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 4.5rem 3rem;
+  color: white;
+}
+
+.footer-links {
+  margin: 20px 0;
+  padding: 0;
+}
+
+.footer-links li a {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8125rem;
+}
+
+.footer-links li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 20%;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.remember-me-container {
+  display: flex;
+  align-items: center;
+}
+
+.remember-me-checkbox {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 }
