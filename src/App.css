@@ -9,8 +9,7 @@ body {
 }
 
 * {
-  width: 100%;
-  height: 100%;
+  box-sizing: border-box;
 }
 
 .netflix-icon {
@@ -24,4 +23,120 @@ body {
 .banner-img {
   background-image: url("./Images/netflixbackground.jpg");
   background-size: cover;
+  min-height: 100vh;
+  background-repeat: no-repeat;
+}
+
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+header.netflix-header {
+  padding: 3rem;
+}
+
+.sign-in-container {
+  max-width: 450px;
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 48px 64px;
+  border-radius: 4px;
+}
+
+.sign-in-content h1 {
+  margin-bottom: 2rem;
+  color: #fff;
+}
+
+.sign-in-form input.email-field,
+.sign-in-form input.password-field {
+  padding: 15px 10px;
+  border-radius: 5px;
+  min-width: 100%;
+  margin-bottom: 16px;
+  display: block;
+  border: none;
+  height: 48px;
+}
+
+.sign-in-form button {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.sign-in-form button.sign-in-button {
+  background-color: rgb(229, 9, 20);
+  color: white;
+}
+
+.sign-in-form .sign-in-code-button {
+  background-color: rgba(128, 128, 128, 0.4);
+  color: white;
+  margin-bottom: 20px;
+}
+
+.or-container label {
+  color: white;
+  font-size: 1rem;
+}
+
+.remember-me-container label {
+  color: white;
+  font-size: 1rem;
+  margin: 16px 0;
+  display: inline-block;
+}
+
+.or-container {
+  text-align: center;
+  margin: 16px 0;
+}
+
+a.pwd-link {
+  color: white;
+  text-decoration: underline;
+  text-align: center;
+  display: block;
+}
+
+a.pwd-link,
+a.signup-now {
+  color: white;
+}
+
+a.learn-more {
+  color: rgb(68, 142, 244);
+  font-size: 0.8125rem;
+}
+
+span.signup-info,
+span.recaptcha-info,
+span.signup-info {
+  text-align: left;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+a.signup-now {
+  color: white;
+  display: inline-block;
+  padding-left: 5px;
+  font-weight: 500;
+}
+
+span.signup-info {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+span.recaptcha-info {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8125rem;
 }
