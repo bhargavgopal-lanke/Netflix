@@ -1,12 +1,13 @@
-import React from 'react'
+import React from "react";
 import "./Login.css";
+import NetflixIcon from "../Icons/NetflixIcon";
 
 const Login = () => {
   return (
     <div>
-      Login
+      <NetflixIcon />
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
