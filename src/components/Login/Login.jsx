@@ -9,7 +9,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [togglePassword, setTogglePassword] = useState(false);
 
-  const handleClick = (e) => {
+  const handleClick = () => {
     setSignUp(!signIn);
   };
 
@@ -33,17 +33,25 @@ const Login = () => {
                   placeholder="Email or phone number"
                   className="email-field"
                 />
-                <div class="password-container">
+                {signIn ? (
+                  <div class="password-container">
+                    <input
+                      type={!togglePassword ? "password" : "text"}
+                      id="password"
+                      className="password-field"
+                      placeholder="Enter password"
+                    />
+                    <span class="toggle-icon" onClick={handleToggle}>
+                      {togglePassword ? <BsEyeFill /> : <BsEyeSlashFill />}
+                    </span>
+                  </div>
+                ) : (
                   <input
-                    type={!togglePassword ? "password" : "text"}
-                    id="password"
-                    className="password-field"
-                    placeholder="Enter password"
+                    type="text"
+                    placeholder="Full name"
+                    className="fullname-field"
                   />
-                  <span class="toggle-icon" onClick={handleToggle}>
-                    {togglePassword ? <BsEyeFill /> : <BsEyeSlashFill />}
-                  </span>
-                </div>
+                )}
                 <button
                   type="submit"
                   className="sign-in-button"
@@ -62,7 +70,7 @@ const Login = () => {
                   </>
                 )}
                 <a href="#" target="_blank" className="pwd-link">
-                  Forgot passord?
+                  Forgot password?
                 </a>
                 <div className="remember-me-container">
                   <input

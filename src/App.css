@@ -51,7 +51,8 @@ header.netflix-header {
 }
 
 .sign-in-form input.email-field,
-.sign-in-form input.password-field {
+.sign-in-form input.password-field,
+.sign-in-form input.fullname-field {
   padding: 15px 10px;
   border-radius: 5px;
   min-width: 100%;
