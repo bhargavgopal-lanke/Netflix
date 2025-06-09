@@ -3,10 +3,13 @@ import "./Login.css";
 import NetflixIcon from "../Icons/NetflixIcon";
 import Footer from "./Footer";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
+import Rememberme from "./Rememberme";
 
 const Login = () => {
   const [signIn, setSignUp] = useState(true);
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [fullName, setFullname] = useState("");
   const [togglePassword, setTogglePassword] = useState(false);
 
   const handleClick = () => {
@@ -33,18 +36,24 @@ const Login = () => {
                     type="text"
                     placeholder="Full name"
                     className="fullname-field"
+                    onChange={(e) => setFullname(e.target.value)}
+                    value={fullName}
                   />
                 )}
                 <input
                   type="email"
                   placeholder="Email or phone number"
                   className="email-field"
+                  onChange={(e) => setEmail(e.target.value)}
+                  value={email}
                 />
                 <div class="password-container">
                   <input
                     type={!togglePassword ? "password" : "text"}
                     id="password"
                     className="password-field"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter password"
                   />
                   <span class="toggle-icon" onClick={handleToggle}>
@@ -72,29 +81,7 @@ const Login = () => {
                 <a href="#" target="_blank" className="pwd-link">
                   Forgot password?
                 </a>
-                <div className="remember-me-container">
-                  <input
-                    type="checkbox"
-                    id="remember-me"
-                    className="remember-me-checkbox"
-                  />
-                  <label htmlFor="remember-me" className="remember-me-label">
-                    Remember me
-                  </label>
-                </div>
-                <span className="signup-info">
-                  {signIn ? "Already a user?" : "New to Netflix"}
-                  <a href="#" className="signup-now">
-                    {signIn ? "Sign In" : "Sign up now"}
-                  </a>
-                </span>
-                <span className="recaptcha-info">
-                  This page is protected by Google reCAPTCHA to ensure you're
-                  not a bot.
-                </span>
-                <a href="#" className="learn-more">
-                  Learn more
-                </a>
+                <Rememberme signIn={signIn} />
               </form>
             </div>
           </div>
