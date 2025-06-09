@@ -61,11 +61,7 @@ const Login = () => {
                   </span>
                 </div>
 
-                <button
-                  type="submit"
-                  className="sign-in-button"
-                  onClick={handleClick}
-                >
+                <button type="submit" className="sign-in-button">
                   {signIn ? "Sign In" : "Sign Up"}
                 </button>
                 {signIn && (
@@ -81,7 +77,7 @@ const Login = () => {
                 <a href="#" target="_blank" className="pwd-link">
                   Forgot password?
                 </a>
-                <Rememberme signIn={signIn} />
+                <Rememberme signIn={signIn} handleClick={handleClick} />
               </form>
             </div>
           </div>
