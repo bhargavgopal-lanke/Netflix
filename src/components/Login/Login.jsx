@@ -33,25 +33,25 @@ const Login = () => {
                   placeholder="Email or phone number"
                   className="email-field"
                 />
-                {signIn ? (
-                  <div class="password-container">
-                    <input
-                      type={!togglePassword ? "password" : "text"}
-                      id="password"
-                      className="password-field"
-                      placeholder="Enter password"
-                    />
-                    <span class="toggle-icon" onClick={handleToggle}>
-                      {togglePassword ? <BsEyeFill /> : <BsEyeSlashFill />}
-                    </span>
-                  </div>
-                ) : (
+                {!signIn && (
                   <input
                     type="text"
                     placeholder="Full name"
                     className="fullname-field"
                   />
                 )}
+                <div class="password-container">
+                  <input
+                    type={!togglePassword ? "password" : "text"}
+                    id="password"
+                    className="password-field"
+                    placeholder="Enter password"
+                  />
+                  <span class="toggle-icon" onClick={handleToggle}>
+                    {togglePassword ? <BsEyeFill /> : <BsEyeSlashFill />}
+                  </span>
+                </div>
+
                 <button
                   type="submit"
                   className="sign-in-button"
