@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.css";
 import NetflixIcon from "../Icons/NetflixIcon";
 import Footer from "./Footer";
 
 const Login = () => {
+  const [signIn, setSignUp] = useState(true);
+
+  const handleClick = (e) => {
+    setSignUp(!signIn);
+  };
+
   return (
     <>
       <div className="banner-img">
@@ -13,7 +19,7 @@ const Login = () => {
           </header>
           <div className="sign-in-container">
             <div className="sign-in-content">
-              <h1>Sign In</h1>
+              <h1>{signIn ? "Sign In" : "Sign Up"}</h1>
               <form className="sign-in-form">
                 <input
                   type="email"
@@ -25,15 +31,23 @@ const Login = () => {
                   placeholder="Password"
                   className="password-field"
                 />
-                <button type="submit" className="sign-in-button">
-                  Sign In
+                <button
+                  type="submit"
+                  className="sign-in-button"
+                  onClick={handleClick}
+                >
+                  {signIn ? "Sign In" : "Sign Up"}
                 </button>
-                <div className="or-container">
-                  <label>OR</label>
-                </div>
-                <button type="submit" className="sign-in-code-button">
-                  Use a Sign-In Code
-                </button>
+                {signIn && (
+                  <>
+                    <div className="or-container">
+                      <label>OR</label>
+                    </div>
+                    <button type="submit" className="sign-in-code-button">
+                      Use a Sign-In Code
+                    </button>
+                  </>
+                )}
                 <a href="#" target="_blank" className="pwd-link">
                   Forgot passord?
                 </a>
@@ -48,9 +62,9 @@ const Login = () => {
                   </label>
                 </div>
                 <span className="signup-info">
-                  New to Netflix?
+                  {signIn ? "Already a user?" : "New to Netflix"}
                   <a href="#" className="signup-now">
-                    Sign up now
+                    {signIn ? "Sign In" : "Sign up now"}
                   </a>
                 </span>
                 <span className="recaptcha-info">
