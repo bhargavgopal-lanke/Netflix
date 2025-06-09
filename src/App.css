@@ -182,3 +182,21 @@ span.recaptcha-info {
   height: 20px;
   margin-right: 10px;
 }
+
+.password-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+input.password-field {
+  padding-right: 30px; /* Space for the icon */
+}
+
+.toggle-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}

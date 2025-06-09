@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import "./Login.css";
 import NetflixIcon from "../Icons/NetflixIcon";
 import Footer from "./Footer";
+import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 
 const Login = () => {
   const [signIn, setSignUp] = useState(true);
+  const [password, setPassword] = useState("");
+  const [togglePassword, setTogglePassword] = useState(false);
 
   const handleClick = (e) => {
     setSignUp(!signIn);
+  };
+
+  const handleToggle = () => {
+    setTogglePassword(!togglePassword);
   };
 
   return (
@@ -26,11 +33,17 @@ const Login = () => {
                   placeholder="Email or phone number"
                   className="email-field"
                 />
-                <input
-                  type="password"
-                  placeholder="Password"
-                  className="password-field"
-                />
+                <div class="password-container">
+                  <input
+                    type={!togglePassword ? "password" : "text"}
+                    id="password"
+                    className="password-field"
+                    placeholder="Enter password"
+                  />
+                  <span class="toggle-icon" onClick={handleToggle}>
+                    {togglePassword ? <BsEyeFill /> : <BsEyeSlashFill />}
+                  </span>
+                </div>
                 <button
                   type="submit"
                   className="sign-in-button"
