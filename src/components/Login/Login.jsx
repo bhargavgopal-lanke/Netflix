@@ -28,11 +28,6 @@ const Login = () => {
             <div className="sign-in-content">
               <h1>{signIn ? "Sign In" : "Sign Up"}</h1>
               <form className="sign-in-form">
-                <input
-                  type="email"
-                  placeholder="Email or phone number"
-                  className="email-field"
-                />
                 {!signIn && (
                   <input
                     type="text"
@@ -40,6 +35,11 @@ const Login = () => {
                     className="fullname-field"
                   />
                 )}
+                <input
+                  type="email"
+                  placeholder="Email or phone number"
+                  className="email-field"
+                />
                 <div class="password-container">
                   <input
                     type={!togglePassword ? "password" : "text"}
