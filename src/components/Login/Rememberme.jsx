@@ -1,6 +1,6 @@
 import React from "react";
 
-const Rememberme = ({ signIn }) => {
+const Rememberme = ({ signIn, handleClick }) => {
   return (
     <div>
       <div className="remember-me-container">
@@ -15,7 +15,7 @@ const Rememberme = ({ signIn }) => {
       </div>
       <span className="signup-info">
         {signIn ? "Already a user?" : "New to Netflix"}
-        <a href="#" className="signup-now">
+        <a href="#" className="signup-now" onClick={handleClick}>
           {signIn ? "Sign In" : "Sign up now"}
         </a>
       </span>
