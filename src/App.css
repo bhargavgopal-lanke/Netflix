@@ -201,3 +201,12 @@ input.password-field {
   transform: translateY(-50%);
   cursor: pointer;
 }
+
+
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 8px;
+  display: inline-block;
+  margin-bottom: 15px;
+}
