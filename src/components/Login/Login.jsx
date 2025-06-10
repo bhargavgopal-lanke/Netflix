@@ -90,7 +90,8 @@ const Login = () => {
                       password,
                       fullName,
                       validateData,
-                      setErrorMessages
+                      setErrorMessages,
+                      signIn
                     )
                   }
                 >
