@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./Login.css";
 import NetflixIcon from "../Icons/NetflixIcon";
 import Footer from "./Footer";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import Rememberme from "./Rememberme";
+import { validateData } from "../../utils/validate";
 
 const Login = () => {
   const [signIn, setSignUp] = useState(true);
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [fullName, setFullname] = useState("");
   const [togglePassword, setTogglePassword] = useState(false);
+  const [errorMessges, setErrorMessages] = useState({});
+
+  const email = useRef(null);
+  const password = useRef(null);
+  const fullName = useRef(null);
 
   const handleClick = () => {
     setSignUp(!signIn);
@@ -19,6 +22,19 @@ const Login = () => {
   const handleToggle = () => {
     setTogglePassword(!togglePassword);
   };
+
+  const handleButtonClick = () => {
+    const emailValue = email?.current?.value || "";
+    const passwordValue = password?.current?.value || "";
+    const fullNameValue = fullName?.current?.value || "";
+    const errorMessages = validateData(
+      emailValue,
+      passwordValue,
+      fullNameValue
+    );
+    setErrorMessages(errorMessages);
+  };
+
 
   return (
     <>
@@ -30,38 +46,50 @@ const Login = () => {
           <div className="sign-in-container">
             <div className="sign-in-content">
               <h1>{signIn ? "Sign In" : "Sign Up"}</h1>
-              <form className="sign-in-form">
+              <form
+                className="sign-in-form"
+                onSubmit={(e) => e.preventDefault()}
+              >
                 {!signIn && (
                   <input
                     type="text"
                     placeholder="Full name"
+                    ref={fullName}
                     className="fullname-field"
-                    onChange={(e) => setFullname(e.target.value)}
-                    value={fullName}
                   />
                 )}
                 <input
                   type="email"
+                  ref={email}
                   placeholder="Email or phone number"
                   className="email-field"
-                  onChange={(e) => setEmail(e.target.value)}
-                  value={email}
                 />
+                {errorMessges?.email && (
+                  <span className="error-message">{errorMessges?.email}</span>
+                )}
                 <div class="password-container">
                   <input
                     type={!togglePassword ? "password" : "text"}
                     id="password"
+                    ref={password}
                     className="password-field"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter password"
                   />
                   <span class="toggle-icon" onClick={handleToggle}>
                     {togglePassword ? <BsEyeFill /> : <BsEyeSlashFill />}
                   </span>
                 </div>
+                {errorMessges?.password && (
+                  <span className="error-message">
+                    {errorMessges?.password}
+                  </span>
+                )}
 
-                <button type="submit" className="sign-in-button">
+                <button
+                  type="submit"
+                  className="sign-in-button"
+                  onClick={handleButtonClick}
+                >
                   {signIn ? "Sign In" : "Sign Up"}
                 </button>
                 {signIn && (
