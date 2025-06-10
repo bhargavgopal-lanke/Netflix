@@ -1,11 +1,11 @@
 export const validateData = (emailValue, passwordValue, fullNameValue) => {
   let errorMsg = {};
 
-  if (!emailValue || !passwordValue || !fullNameValue) {
-    errorMsg.fullName = "Full name is required.";
+  if (!emailValue || !passwordValue) {
     errorMsg.email = "Email is required.";
     errorMsg.password = "Password is required.";
   }
+
 
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (emailValue && !emailPattern.test(emailValue)) {
@@ -23,5 +23,5 @@ export const validateData = (emailValue, passwordValue, fullNameValue) => {
     errorMsg.fullName =
       "Full name must be between 3 and 16 characters long and can only contain letters.";
   }
-  return errorMsg;
+  return Object.keys(errorMsg).length === 0 ? null : errorMsg;
 };
