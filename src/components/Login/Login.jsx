@@ -5,6 +5,11 @@ import Footer from "./Footer";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import Rememberme from "./Rememberme";
 import { validateData } from "../../utils/validate";
+import {
+  handleButtonClick,
+  handleClick,
+  handleToggle,
+} from "../../utils/EventHandlerFunctions";
 
 const Login = () => {
   const [signIn, setSignUp] = useState(true);
@@ -14,27 +19,6 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const fullName = useRef(null);
-
-  const handleClick = () => {
-    setSignUp(!signIn);
-  };
-
-  const handleToggle = () => {
-    setTogglePassword(!togglePassword);
-  };
-
-  const handleButtonClick = () => {
-    const emailValue = email?.current?.value || "";
-    const passwordValue = password?.current?.value || "";
-    const fullNameValue = fullName?.current?.value || "";
-    const errorMessages = validateData(
-      emailValue,
-      passwordValue,
-      fullNameValue
-    );
-    setErrorMessages(errorMessages);
-  };
-
 
   return (
     <>
@@ -75,7 +59,12 @@ const Login = () => {
                     className="password-field"
                     placeholder="Enter password"
                   />
-                  <span class="toggle-icon" onClick={handleToggle}>
+                  <span
+                    class="toggle-icon"
+                    onClick={() =>
+                      handleToggle(setTogglePassword, togglePassword)
+                    }
+                  >
                     {togglePassword ? <BsEyeFill /> : <BsEyeSlashFill />}
                   </span>
                 </div>
@@ -88,7 +77,15 @@ const Login = () => {
                 <button
                   type="submit"
                   className="sign-in-button"
-                  onClick={handleButtonClick}
+                  onClick={() =>
+                    handleButtonClick(
+                      email,
+                      password,
+                      fullName,
+                      validateData,
+                      setErrorMessages
+                    )
+                  }
                 >
                   {signIn ? "Sign In" : "Sign Up"}
                 </button>
@@ -105,7 +102,10 @@ const Login = () => {
                 <a href="#" target="_blank" className="pwd-link">
                   Forgot password?
                 </a>
-                <Rememberme signIn={signIn} handleClick={handleClick} />
+                <Rememberme
+                  signIn={signIn}
+                  handleClick={() => handleClick(signIn, setSignUp)}
+                />
               </form>
             </div>
           </div>
