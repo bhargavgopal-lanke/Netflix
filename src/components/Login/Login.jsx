@@ -80,6 +80,9 @@ const Login = () => {
                     {errorMessges?.password}
                   </span>
                 )}
+                {errorMessges?.error && (
+                  <span className="error-message">{errorMessges?.error}</span>
+                )}
 
                 <button
                   type="submit"
