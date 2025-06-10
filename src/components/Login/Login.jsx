@@ -35,12 +35,19 @@ const Login = () => {
                 onSubmit={(e) => e.preventDefault()}
               >
                 {!signIn && (
-                  <input
-                    type="text"
-                    placeholder="Full name"
-                    ref={fullName}
-                    className="fullname-field"
-                  />
+                  <>
+                    <input
+                      type="text"
+                      placeholder="Full name"
+                      ref={fullName}
+                      className="fullname-field"
+                    />
+                    {errorMessges?.fullName && (
+                      <span className="error-message">
+                        {errorMessges?.fullName}
+                      </span>
+                    )}
+                  </>
                 )}
                 <input
                   type="email"

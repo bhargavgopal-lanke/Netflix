@@ -6,6 +6,9 @@ export const validateData = (emailValue, passwordValue, fullNameValue) => {
     errorMsg.password = "Password is required.";
   }
 
+  if (!fullNameValue) {
+    errorMsg.fullName = "Full name is required.";
+  }
 
   const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   if (emailValue && !emailPattern.test(emailValue)) {
