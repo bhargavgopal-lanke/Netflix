@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
 import "./Login.css";
-import NetflixIcon from "../Icons/NetflixIcon";
 import Footer from "./Footer";
 import { BsEyeFill, BsEyeSlashFill } from "react-icons/bs";
 import Rememberme from "./Rememberme";
@@ -11,6 +10,7 @@ import {
   handleToggle,
 } from "../../utils/EventHandlerFunctions";
 import { useNavigate } from "react-router-dom";
+import Header from "../Header/Header";
 
 const Login = () => {
   const [signIn, setSignUp] = useState(true);
@@ -27,9 +27,7 @@ const Login = () => {
     <>
       <div className="banner-img">
         <div className="container">
-          <header className="netflix-header">
-            <NetflixIcon />
-          </header>
+          <Header />
           <div className="sign-in-container">
             <div className="sign-in-content">
               <h1>{signIn ? "Sign In" : "Sign Up"}</h1>

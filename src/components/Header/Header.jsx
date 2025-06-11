@@ -1,12 +1,12 @@
-import React from 'react'
-import NetflixIcon from '../Icons/NetflixIcon'
+import React from "react";
+import NetflixIcon from "../Icons/NetflixIcon";
 
 const Header = () => {
   return (
-    <div>
+    <div className="netflix-header">
       <NetflixIcon />
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

@@ -1,12 +1,12 @@
-import React from 'react'
+import React from "react";
+import Header from "./Header/Header";
 
 const Browse = () => {
   return (
-    <div>
-      Browse Page
-      <p>Welcome to the Browse page!</p>
+    <div className="container">
+      <Header />
     </div>
-  )
-}
+  );
+};
 
-export default Browse
+export default Browse;
