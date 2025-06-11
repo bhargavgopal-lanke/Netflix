@@ -21,6 +21,8 @@ export const handleButtonClick = (buttonProps) => {
     fullName,
     validateData,
     setErrorMessages,
+    signIn,
+    navigate,
   } = buttonProps;
   const emailValue = email?.current?.value || "";
   const passwordValue = password?.current?.value || "";
@@ -28,17 +30,24 @@ export const handleButtonClick = (buttonProps) => {
   const errorMessages = validateData(emailValue, passwordValue, fullNameValue);
   setErrorMessages(errorMessages);
   if (errorMessages === null) return;
-  handleSignup(buttonProps);
+  handleSignup(
+    signIn,
+    emailValue,
+    passwordValue,
+    fullNameValue,
+    setErrorMessages,
+    navigate
+  );
 };
 
-function handleSignup({
+function handleSignup(
   signIn,
   emailValue,
   passwordValue,
   fullNameValue,
   setErrorMessages,
-  navigate,
-}) {
+  navigate
+) {
   if (!signIn) {
     createUserWithEmailAndPassword(auth, emailValue, passwordValue)
       .then((userCredential) => {
