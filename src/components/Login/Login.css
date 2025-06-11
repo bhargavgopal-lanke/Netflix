@@ -4,6 +4,7 @@
   color: rgb(229, 9, 20);
   fill: currentcolor;
   display: block;
+  cursor: pointer;
 }
 
 .banner-img {
@@ -14,9 +15,6 @@
   padding-bottom: 48px;
 }
 
-header.netflix-header {
-  padding: 3rem;
-}
 
 .sign-in-container {
   max-width: 450px;

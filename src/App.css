@@ -16,3 +16,33 @@ body {
   max-width: 1300px;
   margin: 0 auto;
 }
+
+
+.netflix-header {
+  padding: 3rem;
+}
+
+.user-logo-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 25px;
+}
+
+.user-logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-logo button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
