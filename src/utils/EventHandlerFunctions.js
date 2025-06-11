@@ -3,6 +3,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "./firebase";
+import { addUser } from "./UserSlice";
 
 export const handleClick = (signIn, setSignUp) => {
   setSignUp(!signIn);
@@ -18,7 +19,8 @@ export const handleButtonClick = (
   fullName,
   validateData,
   setErrorMessages,
-  signIn
+  signIn,
+  navigate
 ) => {
   const emailValue = email?.current?.value || "";
   const passwordValue = password?.current?.value || "";
@@ -26,13 +28,18 @@ export const handleButtonClick = (
   const errorMessages = validateData(emailValue, passwordValue, fullNameValue);
   setErrorMessages(errorMessages);
   if (errorMessages === null) return;
+
   console.log("signIn:", signIn);
   if (!signIn) {
     createUserWithEmailAndPassword(auth, emailValue, passwordValue)
       .then((userCredential) => {
         // create a new user in the database
         const user = userCredential.user;
+        addUser({
+          email: user.email,
+        });
         console.log("User created successfully:", user);
+        navigate("/");
       })
       .catch((error) => {
         const { code, message } = error;
@@ -43,6 +50,7 @@ export const handleButtonClick = (
     signInWithEmailAndPassword(auth, emailValue, passwordValue)
       .then((userData) => {
         console.log("User signed in successfully:", userData.user);
+        navigate("/browse");
       })
       .catch((error) => {
         const { code, message } = error;

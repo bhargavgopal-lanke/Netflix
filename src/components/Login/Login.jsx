@@ -10,6 +10,7 @@ import {
   handleClick,
   handleToggle,
 } from "../../utils/EventHandlerFunctions";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [signIn, setSignUp] = useState(true);
@@ -19,6 +20,8 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const fullName = useRef(null);
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -94,7 +97,8 @@ const Login = () => {
                       fullName,
                       validateData,
                       setErrorMessages,
-                      signIn
+                      signIn,
+                      navigate
                     )
                   }
                 >
