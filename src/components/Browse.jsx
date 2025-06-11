@@ -5,7 +5,7 @@ const Browse = () => {
   return (
     <div className="container">
       <Header />
-    <div>
+    </div>
   );
 };
 
