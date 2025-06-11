@@ -1,8 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const NetflixIcon = () => {
+  const navigate = useNavigate();
+  const handleLogoClick = () => {
+    navigate("/");
+  };
+  
   return (
-    <div>
+    <div onClick={handleLogoClick}>
       <svg
         viewBox="0 0 111 30"
         version="1.1"
