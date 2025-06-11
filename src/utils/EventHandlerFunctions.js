@@ -1,6 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "./firebase";
 import { addUser } from "./UserSlice";
@@ -13,31 +14,54 @@ export const handleToggle = (setTogglePassword, togglePassword) => {
   setTogglePassword(!togglePassword);
 };
 
-export const handleButtonClick = (
-  email,
-  password,
-  fullName,
-  validateData,
-  setErrorMessages,
-  signIn,
-  navigate
-) => {
+export const handleButtonClick = (buttonProps) => {
+  const {
+    email,
+    password,
+    fullName,
+    validateData,
+    setErrorMessages,
+  } = buttonProps;
   const emailValue = email?.current?.value || "";
   const passwordValue = password?.current?.value || "";
   const fullNameValue = fullName?.current?.value || "";
   const errorMessages = validateData(emailValue, passwordValue, fullNameValue);
   setErrorMessages(errorMessages);
   if (errorMessages === null) return;
+  handleSignup(buttonProps);
+};
 
-  console.log("signIn:", signIn);
+function handleSignup({
+  signIn,
+  emailValue,
+  passwordValue,
+  fullNameValue,
+  setErrorMessages,
+  navigate,
+}) {
   if (!signIn) {
     createUserWithEmailAndPassword(auth, emailValue, passwordValue)
       .then((userCredential) => {
         // create a new user in the database
         const user = userCredential.user;
-        addUser({
-          email: user.email,
-        });
+
+        updateProfile(auth.currentUser, {
+          displayName: fullNameValue,
+          photoURL: "https://example.com/jane-q-user/profile.jpg",
+        })
+          .then(() => {
+            // Profile updated!
+            // ...
+          })
+          .catch((error) => {
+            // An error occurred
+            // ...
+          });
+
+        // addUser({
+        //   email: user.email,
+        //   password: passwordValue
+        // });
         console.log("User created successfully:", user);
         navigate("/");
       })
@@ -57,4 +81,4 @@ export const handleButtonClick = (
         setErrorMessages({ error: code + ":" + message });
       });
   }
-};
+}

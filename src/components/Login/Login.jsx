@@ -12,7 +12,6 @@ import {
 import { useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
 
-
 const Login = () => {
   const [signIn, setSignUp] = useState(true);
   const [togglePassword, setTogglePassword] = useState(false);
@@ -23,6 +22,16 @@ const Login = () => {
   const fullName = useRef(null);
 
   const navigate = useNavigate();
+
+  const buttonProps = {
+    email,
+    password,
+    fullName,
+    validateData,
+    setErrorMessages,
+    signIn,
+    navigate,
+  };
 
   return (
     <>
@@ -89,17 +98,9 @@ const Login = () => {
                 <button
                   type="submit"
                   className="sign-in-button"
-                  onClick={() =>
-                    handleButtonClick(
-                      email,
-                      password,
-                      fullName,
-                      validateData,
-                      setErrorMessages,
-                      signIn,
-                      navigate
-                    )
-                  }
+                  onClick={() => {
+                    handleButtonClick(buttonProps);
+                  }}
                 >
                   {signIn ? "Sign In" : "Sign Up"}
                 </button>
