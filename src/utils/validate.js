@@ -1,4 +1,4 @@
-export const validateData = (emailValue, passwordValue, fullNameValue) => {
+export const validateData = (signIn, emailValue, passwordValue, fullNameValue) => {
   let errorMsg = {};
 
   if (!emailValue || !passwordValue) {
@@ -6,7 +6,7 @@ export const validateData = (emailValue, passwordValue, fullNameValue) => {
     errorMsg.password = "Password is required.";
   }
 
-  if (!fullNameValue) {
+  if (!signIn && !fullNameValue) {
     errorMsg.fullName = "Full name is required.";
   }
 
