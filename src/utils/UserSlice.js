@@ -10,10 +10,8 @@ let UserSlice = createSlice({
   reducers: {
     addUser: (state, action) => {
       state.user = action.payload;
-      console.log(state.user, action);
     },
     removeUser: (state, action) => {
-      console.log(state, action);
       state = action.payload;
     },
   },
