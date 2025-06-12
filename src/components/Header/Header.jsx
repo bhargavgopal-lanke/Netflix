@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import NetflixIcon from "../Icons/NetflixIcon";
-import userlogo from "../../Images/userlogoimage.jpg";
 import { auth } from "../../utils/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
@@ -22,7 +21,7 @@ const Header = () => {
         console.log(error.message);
       });
   };
-  
+
 
     useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
