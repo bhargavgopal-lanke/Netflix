@@ -11,11 +11,14 @@ import {
 } from "../../utils/EventHandlerFunctions";
 import { useNavigate } from "react-router-dom";
 import Header from "../Header/Header";
+import { useDispatch } from "react-redux";
+
 
 const Login = () => {
   const [signIn, setSignUp] = useState(true);
   const [togglePassword, setTogglePassword] = useState(false);
   const [errorMessges, setErrorMessages] = useState({});
+  const dispatch = useDispatch();
 
   const email = useRef(null);
   const password = useRef(null);
@@ -31,6 +34,7 @@ const Login = () => {
     setErrorMessages,
     signIn,
     navigate,
+    dispatch
   };
 
   return (
