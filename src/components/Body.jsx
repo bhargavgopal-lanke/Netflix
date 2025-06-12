@@ -25,14 +25,7 @@ const Body = () => {
         );
       } else {
         console.log("user is signed out");
-        dispatch(
-          removeUser({
-            uid: uid,
-            displayName: displayName,
-            email: email,
-            photoURL: photoURL,
-          })
-        );
+        dispatch(removeUser());
       }
     });
   }, [dispatch]);

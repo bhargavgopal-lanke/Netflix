@@ -23,12 +23,18 @@ export const handleButtonClick = (buttonProps) => {
     setErrorMessages,
     signIn,
     navigate,
+    dispatch,
   } = buttonProps;
 
   const emailValue = email?.current?.value || "";
   const passwordValue = password?.current?.value || "";
   const fullNameValue = fullName?.current?.value || "";
-  const errorMessages = validateData(signIn,emailValue, passwordValue, fullNameValue);
+  const errorMessages = validateData(
+    signIn,
+    emailValue,
+    passwordValue,
+    fullNameValue
+  );
   setErrorMessages(errorMessages);
   if (errorMessages) return;
   handleSignup(
@@ -37,7 +43,8 @@ export const handleButtonClick = (buttonProps) => {
     passwordValue,
     fullNameValue,
     setErrorMessages,
-    navigate
+    navigate,
+    dispatch
   );
 };
 
@@ -47,28 +54,36 @@ function handleSignup(
   passwordValue,
   fullNameValue,
   setErrorMessages,
-  navigate
+  navigate,
+  dispatch
 ) {
-  console.log("Creating new user with email:", emailValue);
-  console.log("signin", signIn, emailValue, passwordValue, fullNameValue);
   if (!signIn) {
     createUserWithEmailAndPassword(auth, emailValue, passwordValue)
       .then((userCredential) => {
         // create a new user in the database
         const user = userCredential.user;
 
-        console.log("fullNameValue:", fullNameValue);
-
         updateProfile(user, {
           displayName: fullNameValue,
           photoURL: "https://example.com/jane-q-user/profile.jpg",
         })
           .then(() => {
+            const { uid, displayName, email, photoURL } =
+              auth?.currentUser || "";
+            dispatch(
+              addUser({
+                uid: uid,
+                displayName: displayName,
+                email: email,
+                photoURL: photoURL,
+              })
+            );
             navigate("/browse");
           })
           .catch((error) => {
             setErrorMessages({ error: error.code + ":" + error.message });
           });
+
         console.log("User created successfully:", user);
       })
       .catch((error) => {
