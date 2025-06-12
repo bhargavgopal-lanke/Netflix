@@ -27,7 +27,7 @@ const Header = () => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       const { uid, displayName, email, photoURL } = user || "";
       if (user) {
-        console.log("user is signed in:", user);
+        // console.log("user is signed in:", user);
         dispatch(
           addUser({
             uid: uid,
@@ -38,7 +38,7 @@ const Header = () => {
         );
         navigate("/browse");
       } else {
-        console.log("user is signed out");
+        // console.log("user is signed out");
         dispatch(removeUser());
         navigate("/");
       }
