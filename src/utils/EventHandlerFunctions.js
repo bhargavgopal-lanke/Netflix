@@ -22,7 +22,6 @@ export const handleButtonClick = (buttonProps) => {
     validateData,
     setErrorMessages,
     signIn,
-    navigate,
     dispatch,
   } = buttonProps;
 
@@ -43,7 +42,6 @@ export const handleButtonClick = (buttonProps) => {
     passwordValue,
     fullNameValue,
     setErrorMessages,
-    navigate,
     dispatch
   );
 };
@@ -54,7 +52,6 @@ function handleSignup(
   passwordValue,
   fullNameValue,
   setErrorMessages,
-  navigate,
   dispatch
 ) {
   if (!signIn) {
@@ -78,7 +75,6 @@ function handleSignup(
                 photoURL: photoURL,
               })
             );
-            navigate("/browse");
           })
           .catch((error) => {
             setErrorMessages({ error: error.code + ":" + error.message });
@@ -95,7 +91,6 @@ function handleSignup(
     signInWithEmailAndPassword(auth, emailValue, passwordValue)
       .then((userData) => {
         console.log("User signed in successfully:", userData.user);
-        navigate("/browse");
       })
       .catch((error) => {
         const { code, message } = error;
