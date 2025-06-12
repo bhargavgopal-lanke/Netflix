@@ -8,19 +8,30 @@ import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/UserSlice";
 
 const Body = () => {
-
   const dispatch = useDispatch();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      const { uid, displayName, email } = user;
+      const { uid, displayName, email, photoURL } = user || "";
       if (user) {
         console.log("user is signed in:", user);
-        dispatch(addUser({ uid: uid, displayName: displayName, email: email }));
+        dispatch(
+          addUser({
+            uid: uid,
+            displayName: displayName,
+            email: email,
+            photoURL: photoURL,
+          })
+        );
       } else {
         console.log("user is signed out");
         dispatch(
-          removeUser({ uid: uid, displayName: displayName, email: email })
+          removeUser({
+            uid: uid,
+            displayName: displayName,
+            email: email,
+            photoURL: photoURL,
+          })
         );
       }
     });

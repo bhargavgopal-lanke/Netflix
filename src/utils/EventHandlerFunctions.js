@@ -1,6 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "./firebase";
 import { addUser } from "./UserSlice";
@@ -13,33 +14,62 @@ export const handleToggle = (setTogglePassword, togglePassword) => {
   setTogglePassword(!togglePassword);
 };
 
-export const handleButtonClick = (
-  email,
-  password,
-  fullName,
-  validateData,
-  setErrorMessages,
-  signIn,
-  navigate
-) => {
+export const handleButtonClick = (buttonProps) => {
+  const {
+    email,
+    password,
+    fullName,
+    validateData,
+    setErrorMessages,
+    signIn,
+    navigate,
+  } = buttonProps;
+
   const emailValue = email?.current?.value || "";
   const passwordValue = password?.current?.value || "";
   const fullNameValue = fullName?.current?.value || "";
-  const errorMessages = validateData(emailValue, passwordValue, fullNameValue);
+  const errorMessages = validateData(signIn,emailValue, passwordValue, fullNameValue);
   setErrorMessages(errorMessages);
-  if (errorMessages === null) return;
+  if (errorMessages) return;
+  handleSignup(
+    signIn,
+    emailValue,
+    passwordValue,
+    fullNameValue,
+    setErrorMessages,
+    navigate
+  );
+};
 
-  console.log("signIn:", signIn);
+function handleSignup(
+  signIn,
+  emailValue,
+  passwordValue,
+  fullNameValue,
+  setErrorMessages,
+  navigate
+) {
+  console.log("Creating new user with email:", emailValue);
+  console.log("signin", signIn, emailValue, passwordValue, fullNameValue);
   if (!signIn) {
     createUserWithEmailAndPassword(auth, emailValue, passwordValue)
       .then((userCredential) => {
         // create a new user in the database
         const user = userCredential.user;
-        addUser({
-          email: user.email,
-        });
+
+        console.log("fullNameValue:", fullNameValue);
+
+        updateProfile(user, {
+          displayName: fullNameValue,
+          photoURL: "https://example.com/jane-q-user/profile.jpg",
+        })
+          .then(() => {
+            navigate("/browse");
+          })
+          .catch((error) => {
+            setErrorMessages({ error: error.code + ":" + error.message });
+          });
         console.log("User created successfully:", user);
-        navigate("/");
       })
       .catch((error) => {
         const { code, message } = error;
@@ -57,4 +87,4 @@ export const handleButtonClick = (
         setErrorMessages({ error: code + ":" + message });
       });
   }
-};
+}
