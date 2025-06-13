@@ -10,7 +10,7 @@ const DisplayMovies = ({ movies }) => {
           return (
             <div key={movies.id}>
               <div>
-                <h4>{movies.title}</h4>
+                {/* <h4>{movies.title}</h4> */}
               </div>
             </div>
           );

@@ -4,18 +4,20 @@ import DisplayMovies from "./DisplayMovies";
 import { useSelector } from "react-redux";
 import useNowPlayingMovies from "../Hooks/useNowPlayingMovies";
 import VedioContainer from "./VedioContainer";
+import VedioTitle from "./VedioTitle";
 
 const Browse = () => {
   useNowPlayingMovies()
   const store = useSelector((state) => state?.newMovies?.movies);
 
-  const movieId = store && store[0]?.id;
+  const trailerMovie = store && store[0];
 
   return (
     <div className="container">
       <Header />
       <div className="movies-container">
-        <VedioContainer movieId={movieId} />
+        <VedioTitle movie={trailerMovie} />
+        <VedioContainer movieId={trailerMovie} />
         <DisplayMovies movies={store} />
       </div>
     </div>
