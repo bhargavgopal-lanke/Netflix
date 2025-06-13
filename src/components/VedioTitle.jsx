@@ -15,8 +15,6 @@ const VedioTitle = ({ movie }) => {
         <iframe
           src={`https://www.youtube.com/embed/${store?.key}`}
           title="Movie trailer"
-          width="100%"
-          height="600px"
           className="iframeStyling"
         ></iframe>
       </div>
