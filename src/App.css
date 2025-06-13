@@ -23,6 +23,7 @@ body {
   justify-content: space-between;
   padding: 2rem 3rem;
   position: fixed;
+  top: 0;
   z-index: 1;
   color: #fff;
   max-width: 100%;
