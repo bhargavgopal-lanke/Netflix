@@ -17,40 +17,67 @@ body {
   margin: 0 auto;
 }
 
-.netflix-header {
-  padding: 3rem 0;
-}
-
-.user-logo-img {
-  width: 50px;
-  height: 50px;
-  border-radius: 15px;
-}
-
-.user-logo {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.user-logo button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
 .header-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.trailer-content {
-  max-width: 300px;
+.header-container .netflix-header {
+  padding: 3rem 0;
 }
 
-.iframeStyling {
+.header-container .user-logo-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+}
+
+.header-container .user-logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.header-container .user-logo button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+
+.vedio-trailer-container .iframe-sec {
+  position: relative;
+}
+
+.vedio-trailer-container .iframe-sec .iframeStyling {
   border: none;
   width: 100%;
   aspect-ratio: 16 / 9;
+}
+
+.vedio-trailer-container .trailer-content {
+  max-width: 300px;
+  position: absolute;
+  top: 30%;
+  left: 5%;
+  color: #fff;
+}
+
+
+.vedio-sec-container {
+  margin: 40px 0;
+}
+
+.trailer-buttons button.trailer-btns {
+  min-width: 100px;
+  height: 48px;
+  border: none;
+  text-align: center;
+  border-radius: 10px;
+  background-color:  rgba(255, 255, 255, 0.2);;
+  margin-right: 15px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
 }
