@@ -4,7 +4,8 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "./firebase";
-import { addUser } from "./UserSlice";
+import { USER_AVATAR } from "./utils";
+import { addUser } from "./Slices/UserSlice";
 
 export const handleClick = (signIn, setSignUp) => {
   setSignUp(!signIn);
@@ -28,6 +29,7 @@ export const handleButtonClick = (buttonProps) => {
   const emailValue = email?.current?.value || "";
   const passwordValue = password?.current?.value || "";
   const fullNameValue = fullName?.current?.value || "";
+  
   const errorMessages = validateData(
     signIn,
     emailValue,
@@ -62,7 +64,7 @@ function handleSignup(
 
         updateProfile(user, {
           displayName: fullNameValue,
-          photoURL: "https://example.com/jane-q-user/profile.jpg",
+          photoURL: USER_AVATAR,
         })
           .then(() => {
             const { uid, displayName, email, photoURL } =

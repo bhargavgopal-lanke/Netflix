@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import NetflixIcon from "../Icons/NetflixIcon";
-import userlogo from "../../Images/userlogoimage.jpg";
 import { auth } from "../../utils/firebase";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { addUser, removeUser } from "../../utils/UserSlice";
+import { addUser, removeUser } from "../../utils/Slices/UserSlice";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -22,13 +21,13 @@ const Header = () => {
         console.log(error.message);
       });
   };
-  
+
 
     useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       const { uid, displayName, email, photoURL } = user || "";
       if (user) {
-        console.log("user is signed in:", user);
+        // console.log("user is signed in:", user);
         dispatch(
           addUser({
             uid: uid,
@@ -39,7 +38,7 @@ const Header = () => {
         );
         navigate("/browse");
       } else {
-        console.log("user is signed out");
+        // console.log("user is signed out");
         dispatch(removeUser());
         navigate("/");
       }
