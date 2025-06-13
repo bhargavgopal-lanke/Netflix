@@ -5,7 +5,7 @@ import Browse from "./Browse";
 
 const Body = () => {
   return (
-    <div className="banner-img">
+    <div className="body-container">
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/browse" element={<Browse />} />
