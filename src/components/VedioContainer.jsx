@@ -2,7 +2,7 @@ import React from 'react'
 
 const VedioContainer = () => {
   return (
-    <div>
+    <div className='vedio-sec-container'>
       Vedio Container
     </div>
   )
