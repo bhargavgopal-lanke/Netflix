@@ -21,10 +21,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
-
-.header-container .netflix-header {
-  padding: 3rem 0;
+  padding: 2rem 3rem;
+  position: fixed;
+  z-index: 1;
+  color: #fff;
+  max-width: 100%;
+  min-width: 100%;
 }
 
 .header-container .user-logo-img {
@@ -43,10 +45,15 @@ body {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  color: #fff;
 }
 
-
 .vedio-trailer-container .iframe-sec {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 1),
+    rgba(255, 255, 255, 0.5)
+  );
   position: relative;
 }
 
@@ -54,16 +61,16 @@ body {
   border: none;
   width: 100%;
   aspect-ratio: 16 / 9;
+  pointer-events: none;
 }
 
 .vedio-trailer-container .trailer-content {
   max-width: 300px;
   position: absolute;
   top: 30%;
-  left: 5%;
+  left: 6%;
   color: #fff;
 }
-
 
 .vedio-sec-container {
   margin: 40px 0;
@@ -75,7 +82,7 @@ body {
   border: none;
   text-align: center;
   border-radius: 10px;
-  background-color:  rgba(255, 255, 255, 0.2);;
+  background-color: rgba(255, 255, 255, 0.2);
   margin-right: 15px;
   color: #fff;
   font-weight: bold;
