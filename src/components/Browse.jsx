@@ -7,13 +7,13 @@ import VedioContainer from "./VedioContainer";
 import VedioTitle from "./VedioTitle";
 
 const Browse = () => {
-  useNowPlayingMovies()
+  useNowPlayingMovies();
   const store = useSelector((state) => state?.newMovies?.movies);
 
   const trailerMovie = store && store[0];
 
   return (
-    <div className="container">
+    <div className="browse-container">
       <Header />
       <div className="movies-container">
         <VedioTitle movie={trailerMovie} />
