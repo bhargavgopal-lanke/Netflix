@@ -19,7 +19,7 @@ body {
 
 
 .netflix-header {
-  padding: 3rem;
+  padding: 3rem 0;
 }
 
 .user-logo-img {
@@ -46,3 +46,11 @@ body {
   justify-content: space-between;
 }
 
+
+.trailer-content {
+  max-width: 300px;
+}
+
+.iframeStyling {
+  border: none;
+}
