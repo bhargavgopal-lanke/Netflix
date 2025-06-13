@@ -4,8 +4,8 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "./firebase";
-import { addUser } from "./UserSlice";
 import { USER_AVATAR } from "./utils";
+import { addUser } from "./Slices/UserSlice";
 
 export const handleClick = (signIn, setSignUp) => {
   setSignUp(!signIn);

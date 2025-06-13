@@ -1,35 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "./Header/Header";
-import { API_OPTIONS } from "../utils/utils";
+import DisplayMovies from "./DisplayMovies";
+import { useSelector } from "react-redux";
+import useNowPlayingMovies from "../Hooks/useNowPlayingMovies";
+import VedioContainer from "./VedioContainer";
 
 const Browse = () => {
-  const [moviesData, setMoviesData] = useState([]);
+  useNowPlayingMovies()
+  const store = useSelector((state) => state?.newMovies?.movies);
 
-  function fetchMoviesData() {
-    fetch(
-      "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
-      API_OPTIONS
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((res) => {
-        setMoviesData(res?.results);
-      })
-      .catch((error) => {
-        console.log(error.code + ":" + error.message);
-      });
-  }
-
-  useEffect(() => {
-    fetchMoviesData();
-  }, []);
-
-  console.log("moviesData", moviesData);
+  const movieId = store && store[0]?.id;
 
   return (
     <div className="container">
       <Header />
+      <div className="movies-container">
+        <VedioContainer movieId={movieId} />
+        <DisplayMovies movies={store} />
+      </div>
     </div>
   );
 };
