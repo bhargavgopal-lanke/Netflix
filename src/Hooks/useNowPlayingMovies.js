@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/utils";
 import { addMovies } from "../utils/Slices/NewMoviesListSlice";
 
-
 const useNowPlayingMovies = () => {
   const dispatch = useDispatch();
+
+  const nowPlayingMovies = useSelector((state) => state?.newMovies?.movies);
 
   function fetchMoviesData() {
     fetch(
@@ -24,7 +25,8 @@ const useNowPlayingMovies = () => {
   }
 
   useEffect(() => {
-    fetchMoviesData();
+    // we only call this API if this state object does not have any data.
+    !nowPlayingMovies && fetchMoviesData();
   }, []);
 };
 

@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { API_OPTIONS } from "../utils/utils";
 import { addTrailerMovie } from "../utils/Slices/NewMoviesListSlice";
 
 const useMovieTrailer = (movieId) => {
   const dispatch = useDispatch();
+  const movieTrailer = useSelector((state) => state?.newMovies?.Trailer);
 
   useEffect(() => {
     if (!movieId) return;
@@ -21,7 +22,7 @@ const useMovieTrailer = (movieId) => {
       const key = filterTrailer[0];
       dispatch(addTrailerMovie(key));
     };
-    fetchMoviesImageUrl();
+    !movieTrailer && fetchMoviesImageUrl();
   }, [movieId, dispatch]);
 };
 
