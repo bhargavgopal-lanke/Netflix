@@ -17,7 +17,6 @@ const Browse = () => {
       <Header />
       <div className="movies-container">
         <VedioTitle movie={trailerMovie} />
-        <VedioContainer movieId={trailerMovie} />
         <SecondaryContainer movies={store} />
       </div>
     </div>
