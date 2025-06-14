@@ -109,3 +109,29 @@ body {
   text-align: center;
   margin: 8px 0;
 }
+
+.vedio-trailer-container .trailer-content {
+  max-width: 300px;
+  position: absolute;
+  top: 30%;
+  left: 5%;
+  color: #fff;
+}
+
+
+.vedio-sec-container {
+  margin: 40px 0;
+}
+
+.trailer-buttons button.trailer-btns {
+  min-width: 100px;
+  height: 48px;
+  border: none;
+  text-align: center;
+  border-radius: 10px;
+  background-color:  rgba(255, 255, 255, 0.2);;
+  margin-right: 15px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
