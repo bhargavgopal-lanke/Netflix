@@ -21,7 +21,6 @@ const Browse = () => {
   const store = useSelector((state) => state);
   const newMovies = store && store?.newMovies?.movies;
   const searchPageView = store?.searchGptPage?.toggleSearchView;
-  console.log("searchPageView", searchPageView);
 
   return (
     <div className="browse-container">

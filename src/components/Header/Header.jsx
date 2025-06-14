@@ -35,6 +35,7 @@ const Header = () => {
 
   const store = useSelector((state) => state);
   const user = store?.userReducer?.user || "";
+  const searchPageView = store?.searchGptPage?.toggleSearchView;
 
   const hanldeSearchClick = () => {
     dispatch(addToggleSearchView());
@@ -58,13 +59,15 @@ const Header = () => {
       </div>
       {user && (
         <div className="user-logo">
-          <select onClick={handleLangClick}>
-            {LangDropdown.map((x) => (
-              <option key={x.identifier} value={x.identifier}>
-                {x.name}
-              </option>
-            ))}
-          </select>
+          {searchPageView && (
+            <select onClick={handleLangClick} className="lang-button">
+              {LangDropdown.map((x) => (
+                <option key={x.identifier} value={x.identifier}>
+                  {x.name}
+                </option>
+              ))}
+            </select>
+          )}
           <button
             type="button"
             className="search-btn"

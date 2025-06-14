@@ -165,3 +165,9 @@ body {
   border-radius: 10px;
   border: none;
 }
+
+.lang-button {
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+}

@@ -16,14 +16,14 @@ export const lang = {
 export const LangDropdown = [
   {
     identifier: "en",
-    name: "en",
+    name: "English",
   },
   {
     identifier: "hi",
-    name: "hi",
+    name: "Hindi",
   },
   {
     identifier: "es",
-    name: "es",
+    name: "Spanish",
   },
 ];
