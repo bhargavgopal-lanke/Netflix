@@ -9,6 +9,7 @@ import usePopularPlayingMovies from "../Hooks/usePopularPalyingMovies";
 import useTrendingMovies from "../Hooks/useTrendingMovies";
 import useUpcomingMovies from "../Hooks/useUpcomingMovies";
 import useHorrorMovies from "../Hooks/useHorrorMovies";
+import SearchGPT from "./SearchGPT";
 
 const Browse = () => {
   useNowPlayingMovies();
@@ -16,16 +17,23 @@ const Browse = () => {
   useTrendingMovies();
   useUpcomingMovies();
   useHorrorMovies();
-  
-  const store = useSelector((state) => state?.newMovies?.movies);
-  const trailerMovie = store && store[0];
+
+  const store = useSelector((state) => state);
+  const newMovies = store && store?.newMovies?.movies;
+  const searchPageView = store?.searchGptPage?.toggleSearchView;
 
   return (
     <div className="browse-container">
       <Header />
       <div className="movies-container">
-        <VedioTitle movie={trailerMovie} />
-        <SecondaryContainer movies={store} />
+        {searchPageView ? (
+          <SearchGPT />
+        ) : (
+          <>
+            <VedioTitle movie={newMovies} />
+            <SecondaryContainer movies={newMovies} />
+          </>
+        )}
       </div>
     </div>
   );

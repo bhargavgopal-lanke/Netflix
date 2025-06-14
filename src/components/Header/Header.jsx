@@ -3,6 +3,11 @@ import NetflixIcon from "../Icons/NetflixIcon";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { HandleSignout, handleSubscribe } from "../../utils/utils";
+import {
+  addLanguageToggle,
+  addToggleSearchView,
+} from "../../utils/Slices/SearchgptSlice";
+import { LangDropdown } from "../../utils/Constants";
 
 const Header = () => {
   const [visible, setVisible] = useState(true);
@@ -28,8 +33,18 @@ const Header = () => {
     };
   }, [dispatch, navigate]);
 
-  const store = useSelector((state) => state?.userReducer?.user);
-  const { displayName, photoURL } = store || "";
+  const store = useSelector((state) => state);
+  const user = store?.userReducer?.user || "";
+  const searchPageView = store?.searchGptPage?.toggleSearchView;
+
+  const hanldeSearchClick = () => {
+    dispatch(addToggleSearchView());
+  };
+
+  const handleLangClick = (e) => {
+    const value = e.target.value;
+    dispatch(addLanguageToggle(value));
+  };
 
   return (
     <div
@@ -42,10 +57,30 @@ const Header = () => {
       <div className="netflix-header">
         <NetflixIcon />
       </div>
-      {store && (
+      {user && (
         <div className="user-logo">
-          <h4>{displayName}</h4>
-          <img src={photoURL} alt="user-image" className="user-logo-img" />
+          {searchPageView && (
+            <select onClick={handleLangClick} className="lang-button">
+              {LangDropdown.map((x) => (
+                <option key={x.identifier} value={x.identifier}>
+                  {x.name}
+                </option>
+              ))}
+            </select>
+          )}
+          <button
+            type="button"
+            className="search-btn"
+            onClick={hanldeSearchClick}
+          >
+            {searchPageView ? "Search GPT" : "Home Page"}
+          </button>
+          <h4>{user?.displayName}</h4>
+          <img
+            src={user?.photoURL}
+            alt="user-image"
+            className="user-logo-img"
+          />
           <button
             type="button"
             onClick={() => HandleSignout(dispatch, navigate)}
