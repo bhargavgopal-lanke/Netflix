@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import useMovieTrailer from "../Hooks/useMovieTrailer";
 
 const VedioTitle = ({ movie }) => {
-  const { id: movieId, overview, original_title } = movie || "";
+  const { id: movieId, overview, original_title } = movie ? movie[0] : "";
 
   useMovieTrailer(movieId);
 
