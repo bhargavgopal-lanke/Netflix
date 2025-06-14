@@ -13,7 +13,7 @@ const VedioTitle = ({ movie }) => {
     <div className="vedio-trailer-container">
       <div className="iframe-sec">
         <iframe
-          src={`https://www.youtube.com/embed/${store?.key}`}
+          src={`https://www.youtube.com/embed/${store?.key}?&autoplay=1&mute=1`}
           title="Movie trailer"
           className="iframeStyling"
         ></iframe>
