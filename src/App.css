@@ -164,6 +164,9 @@ body {
   min-width: 150px;
   border-radius: 10px;
   border: none;
+  background-color: red;
+  color: white;
+  font-weight: bold;
 }
 
 .lang-button {

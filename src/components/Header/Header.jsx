@@ -73,7 +73,7 @@ const Header = () => {
             className="search-btn"
             onClick={hanldeSearchClick}
           >
-            SearchGPT
+            {searchPageView ? "Search GPT" : "Home Page"}
           </button>
           <img
             src={user?.photoURL}
