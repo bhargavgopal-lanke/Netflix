@@ -3,7 +3,11 @@ import NetflixIcon from "../Icons/NetflixIcon";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { HandleSignout, handleSubscribe } from "../../utils/utils";
-import { addToggleSearchView } from "../../utils/Slices/SearchgptSlice";
+import {
+  addLanguageToggle,
+  addToggleSearchView,
+} from "../../utils/Slices/SearchgptSlice";
+import { LangDropdown } from "../../utils/Constants";
 
 const Header = () => {
   const [visible, setVisible] = useState(true);
@@ -36,6 +40,11 @@ const Header = () => {
     dispatch(addToggleSearchView());
   };
 
+  const handleLangClick = (e) => {
+    const value = e.target.value;
+    dispatch(addLanguageToggle(value));
+  };
+
   return (
     <div
       className="header-container"
@@ -49,6 +58,13 @@ const Header = () => {
       </div>
       {user && (
         <div className="user-logo">
+          <select onClick={handleLangClick}>
+            {LangDropdown.map((x) => (
+              <option key={x.identifier} value={x.identifier}>
+                {x.name}
+              </option>
+            ))}
+          </select>
           <button
             type="button"
             className="search-btn"
