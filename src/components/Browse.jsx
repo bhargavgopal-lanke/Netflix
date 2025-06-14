@@ -5,11 +5,19 @@ import { useSelector } from "react-redux";
 import useNowPlayingMovies from "../Hooks/useNowPlayingMovies";
 import VedioContainer from "./VedioContainer";
 import VedioTitle from "./VedioTitle";
+import usePopularPlayingMovies from "../Hooks/usePopularPalyingMovies";
+import useTrendingMovies from "../Hooks/useTrendingMovies";
+import useUpcomingMovies from "../Hooks/useUpcomingMovies";
+import useHorrorMovies from "../Hooks/useHorrorMovies";
 
 const Browse = () => {
   useNowPlayingMovies();
+  usePopularPlayingMovies();
+  useTrendingMovies();
+  useUpcomingMovies();
+  useHorrorMovies();
+  
   const store = useSelector((state) => state?.newMovies?.movies);
-
   const trailerMovie = store && store[0];
 
   return (
