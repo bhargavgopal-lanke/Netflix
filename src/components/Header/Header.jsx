@@ -75,6 +75,7 @@ const Header = () => {
           >
             {searchPageView ? "Search GPT" : "Home Page"}
           </button>
+          <h4>{user?.displayName}</h4>
           <img
             src={user?.photoURL}
             alt="user-image"
